@@ -11,7 +11,7 @@ import (
 var version string
 
 func main() {
-	_ := := godotenv.Load()
+	_ = godotenv.Load()
 
 	conf, err := config.DefineConfig()
 	if err != nil {
