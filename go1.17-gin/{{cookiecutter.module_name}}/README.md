@@ -9,8 +9,8 @@
 **Clone Repository**
 
 ```bash
-git clone {{ project repository }}
-cd {{ project repository }}
+git clone `project repository`
+cd `directory`
 ```
 
 **Install Packages**
