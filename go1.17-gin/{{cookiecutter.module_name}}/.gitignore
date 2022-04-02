@@ -1,0 +1,6 @@
+.env
+env
+docker-compose.yml
+__debug_bin
+
+bin/

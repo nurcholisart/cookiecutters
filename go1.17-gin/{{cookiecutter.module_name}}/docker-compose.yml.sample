@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  api:
+    image: {{cookiecutter.module_name}}:latest
+    container_name: {{cookiecutter.module_name}}
+    ports:
+      - 8000:8000
+    restart: always
+    environment:
+      - APP_NAME={{cookiecutter.module_name}}
+      - DEBUG=false
+      - PORT=8000
+      - QISMO_HOST=https://multichannel.qiscus.com
+      - QISCUS_SDK_HOST=https://api.qiscus.com
+      - QISCUS_APP_ID=your-app-id
+      - QISCUS_SECRET_KEY=your-secret-key
