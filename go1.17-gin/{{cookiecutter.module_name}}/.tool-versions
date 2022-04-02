@@ -1,1 +1,1 @@
-golang {{cookiecutter.go_version}}
+golang 1.17

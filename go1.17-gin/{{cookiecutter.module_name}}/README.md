@@ -2,7 +2,7 @@
 {{ cookiecutter.project_description }}
 
 ### Requirements
-- Go {{ cookiecutter.go_version }}
+- Go 1.17
 - Qiscus Multichannel Account
 
 ### Local Setup
