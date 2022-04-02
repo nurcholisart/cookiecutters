@@ -20,7 +20,7 @@ brew install cookiecutter
 **Initialize project using template**
 ```bash
 # Choose the template that you want to setup
-cookiecutter https://github.com/user/repo-name.git --directory="go1.17-gin"
+cookiecutter https://github.com/nurcholisart/cookiecutters --directory="go1.17-gin"
 ```
 
 **Go to project directory**
