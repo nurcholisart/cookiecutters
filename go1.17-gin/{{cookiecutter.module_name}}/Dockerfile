@@ -1,5 +1,5 @@
 # Builder Stage
-FROM golang:{{cookiecutter.go_version}}-alpine AS builder
+FROM golang:1.17-alpine AS builder
 
 RUN apk update
 RUN apk add --no-cache curl bash nano
