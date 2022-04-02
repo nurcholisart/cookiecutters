@@ -1,0 +1,13 @@
+pipelines:
+  branches:
+    staging:
+      - step:
+          name: Initial Step
+          script:
+            - echo "Ready for staging deployment"
+      - step:
+          name: Deploy to Staging
+          deployment: staging
+          trigger: manual
+          script:
+            - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAG.git staging:master

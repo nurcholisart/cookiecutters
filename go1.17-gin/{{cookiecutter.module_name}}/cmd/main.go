@@ -1,31 +1,27 @@
 package main
 
 import (
-	"log"
-	"github.com/joho/godotenv"
 	"{{cookiecutter.module_name}}/config"
-	"{{cookiecutter.module_name}}/helpers"
+	"{{cookiecutter.module_name}}/router"
 	"{{cookiecutter.module_name}}/server"
-)
 
-var version string
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
+	"github.com/rs/zerolog/log"
+)
 
 func main() {
 	_ = godotenv.Load()
 
-	conf, err := config.DefineConfig()
+	cfg, err := config.LoadConfig()
 	if err != nil {
-		log.Fatalf("Failed to run server: %s", err.Error())
+		log.Fatal().Msgf("failed to run server: %s", err.Error())
 	}
 
-	conf.Version = version
-
-	appLog := helpers.AppLog{
-		Severity: "info",
-		Message:  "Hello",
+	if !cfg.Debug {
+		gin.SetMode(gin.ReleaseMode)
 	}
 
-	appLog.PrintLog()
-
-	server.Start(conf)
+	routes := router.NewRouter(cfg)
+	server.Start(cfg, routes)
 }

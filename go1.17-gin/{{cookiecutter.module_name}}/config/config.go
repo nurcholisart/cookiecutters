@@ -1,13 +1,11 @@
 package config
 
 import (
-	"fmt"
-
 	"github.com/kelseyhightower/envconfig"
 )
 
 type Config struct {
-	AppName         string `envconfig:"APP_NAME" default:"{{cookiecutter.project_name}}"`
+	AppName         string `envconfig:"APP_NAME" default:"bri-life-crm"`
 	Version         string `default:"1.0.0"`
 	Debug           bool   `envconfig:"DEBUG" default:"false"`
 	Port            int    `envconfig:"PORT" default:"8000"`
@@ -17,16 +15,12 @@ type Config struct {
 	QiscusBaseURL   string `envconfig:"QISCUS_BASE_URL" default:"https://api.qiscus.com"`
 }
 
-var AppConfig Config
+func LoadConfig() (*Config, error) {
+	var conf Config
 
-func DefineConfig() (*Config, error) {
-	if err := envconfig.Process("", &AppConfig); err != nil {
+	if err := envconfig.Process("", &conf); err != nil {
 		return nil, err
 	}
 
-	return &AppConfig, nil
-}
-
-func (c *Config) GetHTTPUserAgent() string {
-	return fmt.Sprintf("%s-v%s", c.AppName, c.Version)
+	return &conf, nil
 }

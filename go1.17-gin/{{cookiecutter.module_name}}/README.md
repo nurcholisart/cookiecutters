@@ -23,7 +23,6 @@ go mod tidy
 ```bash
 cp .env.sample .env
 ```
-
 **Run Test**
 
 ```bash
